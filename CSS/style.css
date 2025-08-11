@@ -1385,11 +1385,11 @@ footer .container .row .links a:hover {
     border: 1px solid var(--border_color);
     box-shadow: 8xp 8xp 10px #c0bfbf44;
 }
-.checkout .input_info .coupon .btn_coupon{
+.checkout .input_info  .button_div{
 text-align: center;
 padding-bottom: 20px;
 }
-.checkout .input_info .coupon .btn_coupon button{
+.checkout .input_info  .button_div button{
    width: 50%;
    background: var(--main_color);
    color: var(--white_color);
@@ -1402,7 +1402,7 @@ padding-bottom: 20px;
    cursor: pointer;
    transition: 0.3s ease-in-out;
 }
-.checkout .input_info .coupon .btn_coupon button:hover{
+.checkout .input_info  .button_div button:hover{
     background: transparent;
     color: var(--main_color);
 }
@@ -1454,7 +1454,7 @@ padding-bottom: 20px;
         width: 100%;
     }
     .checkout .input_info h2{
-        font-size: 20px;
+        font-size: ;
     }
 
 
