@@ -188,7 +188,7 @@ if (checkout_items) {
 
 
     subtotal_chekout.innerHTML= `$ ${total_price.toFixed(2)}`
-    total_chekout.innerHTML= `$ ${total_price + 20}`
+    total_chekout.innerHTML= `$ ${total_price + 0}`
 
 }
 
@@ -267,7 +267,6 @@ function updateButoonsState(productId) {
 
 
 updateCart()
-
 
 
 
