@@ -65,10 +65,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // تفريغ السلة وإعادة تحميل الصفحة بعد تأخير بسيط
             setTimeout(() => {
                 localStorage.removeItem("cart");
-                alert('تم إتمام الطلب بنجاح!');
+                alert('تم استلام طلبك! سيصبح جاهزًا خلال 45 دقيقة');
                 window.location.reload();
             }, 1000);
         })
         .catch((error) => console.error("Error!", error.message));
     });
 });
+
