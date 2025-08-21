@@ -1454,9 +1454,344 @@ padding-bottom: 20px;
         width: 100%;
     }
     .checkout .input_info h2{
-        font-size: ;
+        font-size:14px ;
     }
 
 
 }
 
+
+/* Start Payment Method Section */
+.payment-method {
+    margin-top: 20px;
+}
+
+.payment-method h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: var(--color_heading);
+}
+
+.payment-options {
+    display: flex;
+    gap: 25px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--p_color);
+    border-radius: 50%;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+}
+
+.option input[type="radio"]:checked {
+    border-color: var(--main_color);
+}
+
+.option input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--main_color);
+    border-radius: 50%;
+}
+
+.option label {
+    font-size: 1rem;
+    color: var(--color_heading);
+    cursor: pointer;
+}
+/* End Payment Method Section */
+
+
+/* Start Service Section */
+.total_service_table {
+     
+    display: none; /* Hide by default */
+}
+/* End Service Section */
+
+
+
+
+
+
+
+
+
+:root {
+    --bg_color: #ffffff;
+    --main_color: #172a3a;
+    --second_color: #000;
+    --border_color: #e0e0e0;
+    --white_color: #f1f2f3;
+    --button_hover_bg: #e9ecef;
+}
+
+
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg_color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--main_color);
+}
+
+.current-shift-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.shift-info-text {
+    font-weight: bold; 
+    font-size: 1.2em; 
+    color: var(--main_color);
+}
+
+.order-filters, .search-section, .reports-section, .date-filter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filter-btn, .report-btn, .search-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--border_color);
+    background-color: var(--bg_color);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    color: var(--main_color);
+}
+
+.filter-btn:hover, .report-btn:hover, .search-btn:hover {
+    background-color: var(--button_hover_bg);
+}
+
+.filter-btn.active {
+    background-color: var(--main_color);
+    color: var(--white_color);
+    border-color: var(--main_color);
+}
+
+#shift-search-input, #start-date-input, #end-date-input {
+    padding: 10px;
+    border: 1px solid var(--border_color);
+    border-radius: 25px;
+    font-size: 16px;
+    width: 200px;
+}
+
+.end-shift-btn {
+    background-color: #dc3545;
+    color: var(--white_color);
+    border-color: #dc3545;
+}
+
+.end-shift-btn:hover {
+    background-color: #c82333;
+}
+
+.order-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.order-card {
+    background-color: var(--white_color);
+    border: 1px solid var(--border_color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.order-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--main_color);
+}
+
+.order-status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: var(--white_color);
+}
+
+.status-new {
+    background-color: #007bff;
+}
+
+.status-in-progress {
+    background-color: #ffc107;
+}
+
+.status-received {
+    background-color: #28a745;
+}
+
+.status-archived {
+    background-color: #6c757d;
+}
+
+.order-details p {
+    margin: 5px 0;
+    font-size: 15px;
+    color: var(--second_color);
+}
+
+.order-details strong {
+    color: var(--main_color);
+}
+
+.order-details h4 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: var(--main_color);
+    border-bottom: 1px solid var(--border_color);
+    padding-bottom: 5px;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-details ul li {
+    padding: 3px 0;
+    font-size: 14px;
+    color: var(--second_color);
+}
+
+.action-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white_color);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.prepare-btn {
+    background-color: #ffc107;
+}
+
+.received-btn {
+    background-color: #28a745;
+}
+
+.print-btn {
+    background-color: #007bff;
+}
+
+.archive-btn {
+    background-color: #6c757d;
+}
+
+.prepare-btn:hover {
+    background-color: #e0a800;
+}
+.received-btn:hover {
+    background-color: #218838;
+}
+.print-btn:hover {
+    background-color: #0069d9;
+}
+.archive-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Style for reports */
+.report-content {
+    background-color: var(--white_color);
+    border: 1px solid var(--border_color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.report-content h3 {
+    text-align: center;
+    color: var(--main_color);
+    margin-top: 0;
+}
+
+.report-content p, .report-content h4, .report-content ul {
+    color: var(--second_color);
+}
+
+.report-content ul {
+    list-style-type: disc;
+    padding-right: 20px;
+}
+
+
+.filter-btn {
+    position: relative; /* مهم جدًا لتحديد موضع العداد */
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff0000;
+    color: white;
+    border-radius:70%;
+    padding: 8px 11px;
+    font-size: 16   px;
+    font-weight: bold;
+    min-width: 16px;
+    text-align: center;
+    line-height: 1;
+}
