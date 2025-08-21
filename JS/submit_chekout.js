@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtotalPriceElement = document.querySelector(".subtotal_chekout");
     const servicePriceElement = document.querySelector(".service_price");
     const finalTotalPriceElement = document.querySelector(".total_chekout");
-
-    // حقل الإدخال المخفي الجديد
+    
+    // تأكد من أن هذه الحقول موجودة في ملف HTML الخاص بك
     const serviceChargeInput = document.getElementById("service_charge_input");
+    const productsInput = document.getElementById("products_input");
+    const totalPriceInput = document.getElementById("total_price_input");
 
-    // دالة لحساب رسوم التوصيل بناءً على العنوان
     function getDeliveryFee(address) {
+        if (!address) return 0; // إضافة تحقق للتأكد من وجود العنوان
         if (address.includes("منطي")) {
             return 10;
         } else if (address.includes("بيجام")) {
@@ -19,11 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (address.includes("ميت")) {
             return 15;
         } else {
-            return 0; // سعر افتراضي
+            return 0;
         }
     }
 
-    // دالة لتحديث السعر النهائي
     window.updateFinalPrice = function() {
         const subtotalText = subtotalPriceElement.textContent.replace('$', '').trim();
         const subtotal = parseFloat(subtotalText);
@@ -32,44 +33,65 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error: Subtotal price is not a valid number.");
             return;
         }
-
+        
         const deliveryFee = getDeliveryFee(addressInput.value);
+        servicePriceElement.textContent = `رسوم خدمة: $${deliveryFee.toFixed(2)}`;
+        
         const finalTotal = subtotal + deliveryFee;
+        finalTotalPriceElement.textContent = `$${finalTotal.toFixed(2)}`;
 
-        servicePriceElement.textContent = `$ ${deliveryFee.toFixed(2)}`;
-        finalTotalPriceElement.textContent = `$ ${finalTotal.toFixed(2)}`;
-
-        // إضافة قيمة رسوم الخدمة إلى الحقل المخفي
         if (serviceChargeInput) {
-            serviceChargeInput.value = deliveryFee;
+            serviceChargeInput.value = deliveryFee.toFixed(2);
+        }
+        if (totalPriceInput) {
+            totalPriceInput.value = finalTotal.toFixed(2);
         }
     }
 
-    // استدعاء الدالة عند تحميل الصفحة
     updateFinalPrice();
-
-    // الاستماع لأي تغيير في حقل العنوان لتحديث السعر
     addressInput.addEventListener('input', updateFinalPrice);
 
-    // معالج حدث إرسال النموذج
     form.addEventListener("submit", (e) => {
-        e.preventDefault(); // منع الإرسال الافتراضي
+        e.preventDefault();
 
-        const scriptURL = "https://script.google.com/macros/s/AKfycbydRKKhXxTioosjIKqrsgURCDYGxBOgoipD3dtOQ1vj2CNeAVaxAcFYbj7lPPOIG_p8/exec";
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const productsData = JSON.stringify(cartItems);
+        
+        productsInput.value = productsData;
+        serviceChargeInput.value = getDeliveryFee(addressInput.value);
+        totalPriceInput.value = (parseFloat(subtotalPriceElement.textContent.replace('$', '')) + getDeliveryFee(addressInput.value)).toFixed(2);
 
+        const formData = new FormData(form);
+        formData.append('action', 'addOrder'); 
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxpH6Dln3SzcO5WRc9QSpL-l00CS8SGGwkwATxOQos90MdwLNQM-V9tJscrd61diP9P/exec";
+        
         fetch(scriptURL, {
             method: "POST",
-            body: new FormData(form),
+            body: formData,
         })
-        .then(() => {
-            // تفريغ السلة وإعادة تحميل الصفحة بعد تأخير بسيط
-            setTimeout(() => {
-                localStorage.removeItem("cart");
-                alert('تم استلام طلبك! سيصبح جاهزًا خلال 45 دقيقة');
-                window.location.reload();
-            }, 1000);
+        .then(response => {
+            // تحقق من أن الاستجابة صالحة قبل محاولة تحليلها كـ JSON
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-        .catch((error) => console.error("Error!", error.message));
+        .then(data => {
+            if (data.result === 'success') {
+                alert("تم إرسال طلبك بنجاح!");
+                form.reset();
+                localStorage.removeItem('cart');
+                window.location.href = "index.html";
+            } else {
+                // عرض رسالة خطأ أكثر تفصيلاً من الخادم
+                alert("حدث خطأ في إرسال طلبك. يرجى المحاولة مرة أخرى. رسالة الخطأ: " + data.error);
+                console.error('Error from server:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error("Error!", error.message);
+            alert("حدث خطأ في الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت.");
+        });
     });
 });
-
