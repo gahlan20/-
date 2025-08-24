@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newOrdersCountElement = document.getElementById('new-orders-count');
     const inProgressCountElement = document.getElementById('in-progress-count'); // عداد قيد التحضير
     const receivedCountElement = document.getElementById('received-count'); // عداد تم الاستلام
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxisXu3Oomybzp63wyQK9JK6n-4UWVCp8YnrXoz_j315F2CRuSq-EhrKKCD_Xs2pv3y/exec'; // يجب استبدال هذا الرابط بالرابط الخاص بك
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby3ywAdcOmUNq93YaG_Bvp8Jt5MZGl5K2pj_blZ31jwQiQHeUcFQHKGZLlXY1bYMSYu/exec'; // يجب استبدال هذا الرابط بالرابط الخاص بك
 
     let allOrders = [];
 
