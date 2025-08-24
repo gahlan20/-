@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const formData = new FormData(form);
         formData.append('action', 'addOrder'); 
 
-        const scriptURL = "https://script.google.com/macros/s/AKfycbxisXu3Oomybzp63wyQK9JK6n-4UWVCp8YnrXoz_j315F2CRuSq-EhrKKCD_Xs2pv3y/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycby3ywAdcOmUNq93YaG_Bvp8Jt5MZGl5K2pj_blZ31jwQiQHeUcFQHKGZLlXY1bYMSYu/exec";
         
         fetch(scriptURL, {
             method: "POST",
@@ -95,5 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
 
