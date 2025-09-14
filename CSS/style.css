@@ -1795,3 +1795,192 @@ padding-bottom: 20px;
     text-align: center;
     line-height: 1;
 }
+/* ===== Products: force Grid layout for all product wrappers including tt ===== */
+/* Target only product wrappers inside slide_product to avoid breaking banner swipers */
+.slide_product .products.swiper-wrapper,
+.slide_product #swiper_items_sale,
+.slide_product #swiper_elctronics,
+.slide_product #swiper_appliances,
+.slide_product #swiper_mobiles,
+.slide_product #swiper_tt {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important; /* desktop: 5 */
+  gap: 20px !important;
+  align-items: start;
+  padding: 0 !important;
+}
+
+/* make each slide act as a grid item (remove swiper flex/width influence) */
+.slide_product .products.swiper-wrapper .swiper-slide,
+.slide_product #swiper_items_sale .swiper-slide,
+.slide_product #swiper_elctronics .swiper-slide,
+.slide_product #swiper_appliances .swiper-slide,
+.slide_product #swiper_mobiles .swiper-slide,
+.slide_product #swiper_tt .swiper-slide {
+  display: block !important;
+  width: auto !important;
+  flex: none !important;
+  max-width: none !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* uniform product card layout */
+.slide_product .product,
+#swiper_items_sale .product,
+#swiper_elctronics .product,
+#swiper_appliances .product,
+#swiper_mobiles .product,
+#swiper_tt .product {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 360px;          /* hoogte ثابت للكارت — عدّل لو تحب أكبر/أصغر */
+  padding: 12px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid var(--border_color);
+}
+
+/* image box */
+.product .img_product {
+  width: 100%;
+  height: 200px;          /* ارتفاع موحد للصور على desktop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.product .img_product img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* uniform crop — لو تفضل الصورة كاملة استخدم contain */
+  display: block;
+}
+
+/* name & price */
+.product .name_product {
+  min-height: 48px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.product .price {
+  min-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* icons/buttons area stay at bottom */
+.product .icons {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Breakpoints */
+@media (max-width:1200px) {
+  .slide_product .products.swiper-wrapper,
+  .slide_product #swiper_items_sale,
+  .slide_product #swiper_elctronics,
+  .slide_product #swiper_appliances,
+  .slide_product #swiper_mobiles,
+  .slide_product #swiper_tt {
+    grid-template-columns: repeat(4, 1fr) !important; /* tablet: 4 */
+  }
+  .product .img_product { height: 170px; }
+  .product { height: 340px; }
+}
+
+@media (max-width:768px) {
+  .slide_product .products.swiper-wrapper,
+  .slide_product #swiper_items_sale,
+  .slide_product #swiper_elctronics,
+  .slide_product #swiper_appliances,
+  .slide_product #swiper_mobiles,
+  .slide_product #swiper_tt {
+    grid-template-columns: repeat(2, 1fr) !important; /* mobile: 2 */
+  }
+  .product .img_product { height: 140px; }
+  .product { height: auto; } /* خلي الكارت ارتفاع متكيف على الموبايل */
+  .product .name_product { font-size: 14px; min-height: auto; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Checkout Bottom Summary ===== */
+.bottom_summary {
+  border-top: 2px solid var(--border_color);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.bottom_summary .shop_table {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border_color);
+}
+
+.bottom_summary .shop_table:last-child {
+  border-bottom: none; /* نشيل الخط من آخر صف */
+}
+
+.bottom_summary .shop_table p {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--color_heading);
+}
+
+.bottom_summary .shop_table span {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--main_color);
+}
+
+/* total يكون أوضح */
+.bottom_summary .shop_table:last-child p,
+.bottom_summary .shop_table:last-child span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
