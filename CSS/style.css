@@ -1984,3 +1984,41 @@ padding-bottom: 20px;
   font-weight: 700;
   color: #000;
 }
+
+
+
+
+
+
+.search_suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--border_color);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+.search_suggestions.active { display: block; }
+.search_suggestions div {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.search_suggestions div:hover {
+  background: var(--bg_color);
+}
+
+/* عند اختيار المنتج وإظهاره */
+.product.highlight {
+  outline: 3px solid var(--main_color);
+  transition: outline 0.3s ease-in-out;
+}
+.product.highlight {
+  outline: 3px solid var(--main_color);
+  border-radius: 8px;
+  transition: outline 0.3s ease-in-out;
+}
