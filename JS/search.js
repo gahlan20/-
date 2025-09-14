@@ -42,7 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
           // نلاقي العنصر في الصفحة
           const productEl = document.getElementById(`product-${item.id}`);
           if (productEl) {
-            productEl.scrollIntoView({ behavior: "smooth", block: "center" });
+            // scroll مع أوفست عشان الهيدر
+            productEl.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(() => {
+              window.scrollBy({ top: -70, behavior: "smooth" });
+            }, 400);
+
+            // Highlight للمنتج
             productEl.classList.add("highlight");
             setTimeout(() => productEl.classList.remove("highlight"), 2000);
           }
