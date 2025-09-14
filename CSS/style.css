@@ -2022,3 +2022,51 @@ padding-bottom: 20px;
   border-radius: 8px;
   transition: outline 0.3s ease-in-out;
 }
+/* صندوق الاقتراحات */
+.search_suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--border_color);
+  border-top: none;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 999;
+  display: none;
+}
+
+.search_suggestions.active {
+  display: block;
+}
+
+.search_suggestions div {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.search_suggestions div:hover {
+  background: #f5f5f5;
+}
+
+/* الموبايل: خلي الصندوق بعرض الشاشة */
+@media (max-width: 768px) {
+  .search_suggestions {
+    position: fixed;
+    top: 60px; /* تحت الهيدر */
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+    max-height: 60vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .search_suggestions div {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
