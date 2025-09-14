@@ -11,7 +11,7 @@
     "img": "img/product/1.png",
     "name": "Redmi 13C Dual SIM with 6GB RAM",
     "price": 280,
-    "catetory": "mobiles"
+    "catetory": "كشري"
   },
   {
     "id": 2,
@@ -32,7 +32,7 @@
     "img": "img/product/4.png",
     "name": "OPPO A18 128GB 4GB Glowing Black",
     "price": 250,
-    "catetory": "mobiles"
+    "catetory": "كشري"
   },
   {
     "id": 5,
@@ -180,6 +180,35 @@
     "price": 300,
     "old_price": 380,
     "catetory": "electronics"
+  },
+ 
+{
+    "id": 25,
+    "img": "img",
+    "name": "علبه 25",
+    "price": 300,
+    "old_price": 380,
+    "catetory": "mobiles"
+  },
+  {
+    "id": 26,
+    "img": "img/product/30.png",
+    "name": "علبه 25",
+    "price": 200,
+    "catetory": "mobiles  "
+  },
+  {
+    "id": 27,
+    "img": "img/product/30.png",
+    "name": "علبه 25",
+    "price": 200,
+    "catetory": "tt"
+  },
+  {
+    "id": 28,
+    "img": "img/product/30.png",
+    "name": "علبه 25",
+    "price": 200,
+    "catetory": "tt"
   }
-
 ]
